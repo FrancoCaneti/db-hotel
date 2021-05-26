@@ -1,0 +1,37 @@
+1. Seleziona tutti gli ospiti che sono stati identificati con la carta di
+identità
+
+SELECT * FROM `ospiti` WHERE `document_type`= "CI"
+
+2. Seleziona tutti gli ospiti che sono nati dopo il 1988
+
+SELECT * FROM `ospiti` WHERE `date_of_birth` > "1988-12-31 23:59:59"
+
+3. Seleziona tutti gli ospiti che hanno più di 20 anni (al momento
+dell’esecuzione della query)
+
+SELECT * FROM `ospiti` WHERE `date_of_birth` < "2001-5-26 00:00:00"
+
+4. Seleziona tutti gli ospiti il cui nome inizia con la D
+
+SELECT * FROM `ospiti` WHERE `name` LIKE "D%"
+
+5. Calcola il totale incassato degli ordini accepted
+
+SELECT SUM(`price`) AS `totale`FROM `pagamenti`WHERE `status` = "accepted"
+
+6. Qual è il prezzo massimo pagato?
+
+SELECT MAX(`price`) FROM `pagamenti` WHERE `status` = "accepted"   (869,00)
+
+7. Seleziona gli ospiti riconosciuti con patente e nati nel 1975
+
+SELECT * FROM `ospiti` WHERE `document_type` = "driver license" AND YEAR(`date_of_birth`) ="1975"
+
+8. Quanti paganti sono anche ospiti?
+
+SELECT COUNT(`ospite_id`) FROM `paganti` WHERE `ospite_id` IS NOT NULL  (14)
+
+9. Quanti posti letto ha l’hotel in totale?
+
+SELECT SUM(`beds`) FROM `stanze` (33)
